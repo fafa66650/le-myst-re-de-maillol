@@ -1,77 +1,79 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Énigme 9 – Le Mystère de Maillol</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fce7f3, #fdf2f8);
-      text-align: center;
-      padding: 50px 20px;
-      color: #581c87;
-    }
-    .box {
-      background: white;
-      max-width: 750px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.05);
-    }
-    h2 {
-      font-size: 2em;
-      color: #a21caf;
-    }
-    input {
-      padding: 10px;
-      font-size: 1.1em;
-      width: 80%;
-      margin-top: 20px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 10px;
-      background: #9333ea;
-      color: white;
-      cursor: pointer;
-    }
-    .savais-tu {
-      margin-top: 30px;
-      background: #f3e8ff;
-      padding: 15px;
-      border-left: 5px solid #9333ea;
-      font-style: italic;
-    }
-  </style>
-</head>
-<body>
-  <div class="box">
-    <h2>🧩 Énigme 9</h2>
-    <p>Devine le mot mystère lié à l'œuvre de Maillol.</p>
-    <input type="text" id="rep" placeholder="Ta réponse ici">
-    <button onclick="valider()">Valider</button>
-    <div id="savaisTu" class="savais-tu" style="display:none;">
-      💡 Le savais-tu ? Aristide Maillol a marqué l'histoire de l'art moderne par ses sculptures simples, mais puissantes.
-    </div>
-  </div>
+<html lang="fr"><head>
+  <meta charset="UTF-8"><title>Énigme 9</title>
+  
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #fdf2f8, #fce7f3);
+  text-align: center;
+  padding: 40px 20px;
+  color: #701a75;
+}
+h2 {
+  color: #a21caf;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #9333ea;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background: #7e22ce;
+}
+img.logo {
+  width: 90px;
+  margin-bottom: 20px;
+}
+</style>
 
-  <script>
-    function valider() {
-      const r = document.getElementById('rep').value.toLowerCase();
-      if (r.includes("maillol") || r.includes("sculpture")) {
-        document.getElementById('savaisTu').style.display = 'block';
-        setTimeout(() => {
-          location.href = 'enigme10.html';
-        }, 3000);
-      } else {
-        alert("Essaie encore. Cherche autour de toi un indice réel !");
-      }
-    }
-  </script>
-</body>
-</html>
+  <script src="lang.js"></script>
+</head>
+<body onload="loadLang()"><img src="assets/logo-fafa.png" alt="Logo" class="logo">
+<style>
+body, html { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+</style>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+<h2 id="titre">Image absente</h2>
+<p id="question">Dans quelle salle manque un tableau ? (n°)</p>
+<input id="rep"><button onclick="valider()" data-i18n="validate">▶️ Valider</button>
+<p id="savais"></p>
+<br><br><button onclick="location.href='enigme10.html'" data-i18n="next">➡️ Suivant</button>
+<script>
+const textes = {
+  fr: {
+    titre: "Image absente",
+    question: "Dans quelle salle manque un tableau ? (n°)",
+    reponse: "3",
+    savais: "La salle 3 présente une anomalie."
+  },
+  en: {
+    titre: "Missing image",
+    question: "In which room is a painting missing? (number only)",
+    reponse: "3",
+    savais: "Room 3 reveals something is off."
+  }
+};
+let lang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+function loadLang() {
+  const t = textes[lang];
+  document.getElementById("titre").innerText = t.titre;
+  document.getElementById("question").innerText = t.question;
+}
+function valider() {
+  const val = document.getElementById("rep").value.toLowerCase();
+  const t = textes[lang];
+  if (val.includes(t.reponse)) {
+    document.getElementById("savais").innerText = "🧠 " + t.savais;
+  } else {
+    alert(lang === "fr" ? "Essaie encore !" : "Try again!");
+  }
+}
+</script>
+</body></html>
