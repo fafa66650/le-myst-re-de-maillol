@@ -1,1 +1,66 @@
-<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>carte.html</title></head><body><h2>Carte interactive</h2><p>Clique sur les lieux pour débloquer des énigmes !</p></body></html>
+<!DOCTYPE html>
+<html lang="fr"><head>
+  <meta charset="UTF-8"><title data-i18n="access_map">🗺️ Carte interactive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #fdf2f8, #fce7f3);
+  text-align: center;
+  padding: 40px 20px;
+  color: #701a75;
+}
+h2 {
+  color: #a21caf;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #9333ea;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background: #7e22ce;
+}
+img.logo {
+  width: 90px;
+  margin-bottom: 20px;
+}
+</style>
+
+  <script src="lang.js"></script>
+</head><body onload="loadLang()"><img src="assets/logo-fafa.png" alt="Logo" class="logo">
+<style>
+body, html { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+</style>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+<h2 data-i18n="access_map">🗺️ Carte des lieux</h2>
+<p data-i18n="intro_paragraph">Une aventure artistique t’attend à Banyuls-sur-Mer...</p>
+<div id="map" style="height: 60vh; margin: 20px auto; max-width: 800px;"></div>
+<br>
+<button onclick="location.href='boussole.html'" data-i18n="use_compass">🧭 Boussole</button>
+<button onclick="location.href='carnet-explorateur.html'" data-i18n="view_carnet">📘 Voir mon carnet</button>
+<button onclick="location.href='enigme1.html'" data-i18n="next">➡️ Suivant</button>
+<p data-i18n="le_savais_tu">🧠 Le savais-tu ? Maillol est né à Banyuls-sur-Mer.</p>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+const map = L.map('map').setView([42.4848, 3.1294], 15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+const lieux = [
+  { name: "Musée Maillol", lat: 42.4848, lon: 3.1294, link: "enigme1.html" },
+  { name: "Place Dina Vierny", lat: 42.4849, lon: 3.1295, link: "enigme2.html" }
+];
+lieux.forEach(lieu => {
+  const marker = L.marker([lieu.lat, lieu.lon]).addTo(map).bindPopup(lieu.name);
+  marker.on("click", () => window.location.href = lieu.link);
+});
+</script>
+</body></html>

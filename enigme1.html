@@ -4,15 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Énigme 1 – Le Mystère de Maillol</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fce7f3, #fdf2f8);
+      text-align: center;
+      padding: 50px 20px;
+      color: #581c87;
+    }
+    .box {
+      background: white;
+      max-width: 750px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.05);
+    }
+    h2 {
+      font-size: 2em;
+      color: #a21caf;
+    }
+    input {
+      padding: 10px;
+      font-size: 1.1em;
+      width: 80%;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background: #9333ea;
+      color: white;
+      cursor: pointer;
+    }
+    .savais-tu {
+      margin-top: 30px;
+      background: #f3e8ff;
+      padding: 15px;
+      border-left: 5px solid #9333ea;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
-  <h2>Énigme 1</h2>
-  <p>Contenu interactif de l'énigme 1 ici...</p>
-  <input type="text" id="rep">
-  <button onclick="valider()">Valider</button>
+  <div class="box">
+    <h2>🎨 Énigme 1</h2>
+    <p>Résous l'énigme liée à Aristide Maillol.</p>
+    <input type="text" id="rep" placeholder="Ta réponse ici">
+    <button onclick="valider()">Valider</button>
+    <div id="savaisTu" class="savais-tu" style="display:none;">
+      💡 Le savais-tu ? Aristide Maillol a vécu à Banyuls et a influencé l’art moderne par la force de ses formes simples et équilibrées.
+    </div>
+  </div>
+
   <script>
     function valider() {
-      alert('Validation fictive pour l'énigme 1.');
+      const r = document.getElementById('rep').value.toLowerCase();
+      if (r.includes("maillol") || r.includes("sculpture")) {
+        document.getElementById('savaisTu').style.display = 'block';
+        setTimeout(() => {
+          location.href = 'enigme2.html';
+        }, 3000);
+      } else {
+        alert("Indice : regarde bien les sculptures autour de toi !");
+      }
     }
   </script>
 </body>
