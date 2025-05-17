@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle 8 – St. John the Baptist Church</title>
+  <script>
+    const LAT = 42.4853;
+    const LON = 3.1270;
+    const TOL = 0.001;
+    navigator.geolocation.getCurrentPosition(pos => {
+      const dist = Math.abs(pos.coords.latitude - LAT) + Math.abs(pos.coords.longitude - LON);
+      if (dist > TOL) {
+        alert("⛔ You're not at the right location yet!");
+        location.href = 'carte.html';
+      }
+    });
+  </script>
+  <style>body { font-family: sans-serif; padding: 30px; }</style>
+</head>
+<body>
+  <h2>📍 Riddle 8: St. John the Baptist Church</h2>
+  <p>How many stained glass windows decorate the front?</p>
+  <input id="rep"><button onclick="valider()">Validate</button>
+  <p id="info" style="margin-top:20px;"></p>
+  <script>
+    function valider() {
+      const r = document.getElementById("rep").value.toLowerCase();
+      if (r.includes("3")) {
+        document.getElementById("info").innerText = "👁️ Did you know? The windows were restored after the war.";
+        setTimeout(() => location.href = "enigme9.en.html", 4000);
+      } else {
+        alert("❌ Wrong answer. Try again!");
+      }
+    }
+  </script>
+</body>
+</html>

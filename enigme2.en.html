@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle 2 – War Memorial</title>
+  <script>
+    const LAT = 42.4862;
+    const LON = 3.1290;
+    const TOL = 0.001;
+    navigator.geolocation.getCurrentPosition(pos => {
+      const dist = Math.abs(pos.coords.latitude - LAT) + Math.abs(pos.coords.longitude - LON);
+      if (dist > TOL) {
+        alert("⛔ You're not at the right location yet!");
+        location.href = 'carte.html';
+      }
+    });
+  </script>
+  <style>body { font-family: sans-serif; padding: 30px; }</style>
+</head>
+<body>
+  <h2>📍 Riddle 2: War Memorial</h2>
+  <p>Take a picture of the War Memorial sculpture.</p>
+  <input id="rep"><button onclick="valider()">Validate</button>
+  <p id="info" style="margin-top:20px;"></p>
+  <script>
+    function valider() {
+      const r = document.getElementById("rep").value.toLowerCase();
+      if (r.includes("photo")) {
+        document.getElementById("info").innerText = "📸 Did you know? This work was unveiled in 1933.";
+        setTimeout(() => location.href = "enigme3.en.html", 4000);
+      } else {
+        alert("❌ Wrong answer. Try again!");
+      }
+    }
+  </script>
+</body>
+</html>

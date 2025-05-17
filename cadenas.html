@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadenas - Enigme secrète</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; padding-top: 40px; }
+    select { font-size: 2em; margin: 0 10px; }
+  </style>
+</head>
+<body>
+  <h2>🔐 Déverrouille le coffre !</h2>
+  <p>Entre le bon code à 3 chiffres pour accéder à l’énigme suivante.</p>
+  <select id="d1"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+  <select id="d2"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+  <select id="d3"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+  <br><br><button onclick="checkCode()">🔓 Déverrouiller</button>
+  <script>
+    function checkCode() {
+      const code = document.getElementById('d1').value + document.getElementById('d2').value + document.getElementById('d3').value;
+      if (code === "861") alert("✅ Coffre ouvert !");
+      else alert("⛔ Code incorrect.");
+    }
+  </script>
+</body>
+</html>

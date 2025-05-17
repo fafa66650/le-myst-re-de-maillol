@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle 3 – Seafront promenade</title>
+  <script>
+    const LAT = 42.4855;
+    const LON = 3.1301;
+    const TOL = 0.001;
+    navigator.geolocation.getCurrentPosition(pos => {
+      const dist = Math.abs(pos.coords.latitude - LAT) + Math.abs(pos.coords.longitude - LON);
+      if (dist > TOL) {
+        alert("⛔ You're not at the right location yet!");
+        location.href = 'carte.html';
+      }
+    });
+  </script>
+  <style>body { font-family: sans-serif; padding: 30px; }</style>
+</head>
+<body>
+  <h2>📍 Riddle 3: Seafront promenade</h2>
+  <p>Which material did Maillol prefer for his sculptures?</p>
+  <input id="rep"><button onclick="valider()">Validate</button>
+  <p id="info" style="margin-top:20px;"></p>
+  <script>
+    function valider() {
+      const r = document.getElementById("rep").value.toLowerCase();
+      if (r.includes("bronze")) {
+        document.getElementById("info").innerText = "🪵 Did you know? Bronze allows great detail and durability.";
+        setTimeout(() => location.href = "enigme4.en.html", 4000);
+      } else {
+        alert("❌ Wrong answer. Try again!");
+      }
+    }
+  </script>
+</body>
+</html>

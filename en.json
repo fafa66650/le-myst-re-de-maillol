@@ -1,0 +1,19 @@
+{
+  "intro_title": "🎨 The Mystery of Maillol",
+  "intro_text": "A Maillol artwork has vanished... but clues left behind might help solve the mystery.",
+  "start_button": "🔍 Start the artistic investigation",
+  "enter_code": "Enter your access code.",
+  "validate": "▶️ Validate",
+  "invalid_code": "❌ Unknown code.",
+  "expired_code": "⏳ Code expired.",
+  "next": "➡️ Next",
+  "return": "⬅️ Back",
+  "see_success": "🏆 View my achievements",
+  "view_carnet": "📘 View my notebook",
+  "use_compass": "🧭 Compass",
+  "access_map": "🗺️ Map",
+  "print": "🖨️ Print",
+  "intro_paragraph": "An artistic and heritage adventure awaits in Banyuls-sur-Mer. Explore Maillol's legacy, solve puzzles, and earn badges!",
+  "congrats": "🎨 Congratulations, Art Sleuth!",
+  "le_savais_tu": "🧠 Did you know?"
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="intro_title">🎨 Le Mystère de Maillol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #fdf2f8, #fce7f3);
+  text-align: center;
+  padding: 40px 20px;
+  color: #701a75;
+}
+h2 {
+  color: #a21caf;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #9333ea;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background: #7e22ce;
+}
+img.logo {
+  width: 90px;
+  margin-bottom: 20px;
+}
+</style>
+
+  <script src="lang.js"></script>
+</head>
+<body onload="loadLang()">
+<img src="assets/logo-fafa.png" alt="Logo" class="logo">
+<style>
+body, html { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+</style>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+<h1 data-i18n="intro_title">🎨 Le Mystère de Maillol</h1>
+<p data-i18n="intro_paragraph">
+  Une aventure artistique et patrimoniale t’attend à Banyuls-sur-Mer...
+</p>
+<p data-i18n="enter_code">Entre ton code pour accéder au parcours.</p>
+<input id="code" placeholder="fafa972">
+<br><br>
+<button onclick="validerCode()" data-i18n="validate">▶️ Valider</button>
+<p id="status" style="color: red;"></p>
+
+<!-- Boutons langue -->
+<div style="margin-top: 20px;">
+  <button onclick="switchLang('fr')">🇫🇷 Français</button>
+  <button onclick="switchLang('en')">🇬🇧 English</button>
+</div>
+
+<script src="codes.js"></script>
+<script>
+function validerCode() {
+  const code = document.getElementById("code").value.trim();
+  const info = codes[code];
+  if (!info) {
+    document.getElementById("status").innerText = tr.invalid_code;
+    return;
+  }
+  const created = new Date(info.created);
+  const now = new Date();
+  const expiration = new Date(created.getTime() + info.valid_hours * 3600000);
+  if (now > expiration) {
+    document.getElementById("status").innerText = tr.expired_code;
+    return;
+  }
+  localStorage.setItem("authorized", "true");
+  location.href = "carte.html";
+}
+</script>
+</body></html>

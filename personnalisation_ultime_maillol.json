@@ -1,0 +1,14 @@
+{
+  "scenarios": "narration plus riche pour début et fin",
+  "modes_de_jeu": [
+    "solo",
+    "famille",
+    "groupe",
+    "groupe spécial"
+  ],
+  "participants": "nom/pseudo individuel + tour par tour",
+  "admin": "changer le code à volonté + durée personnalisée",
+  "succès_bonus": "système de succès, mini-jeux, badges",
+  "style": "fun, immersif, dynamique, multilingue complet",
+  "interface_admin": true
+}

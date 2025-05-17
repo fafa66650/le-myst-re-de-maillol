@@ -1,0 +1,19 @@
+{
+  "intro_title": "🎨 Le Mystère de Maillol",
+  "intro_text": "Une œuvre de Maillol a disparu du musée... mais une série d’indices laissés par l’artiste lui-même permettrait de la retrouver.",
+  "start_button": "🔍 Démarrer l’enquête artistique",
+  "enter_code": "Entre ton code pour accéder au parcours.",
+  "validate": "▶️ Valider",
+  "invalid_code": "❌ Code inconnu.",
+  "expired_code": "⏳ Code expiré.",
+  "next": "➡️ Suivant",
+  "return": "⬅️ Retour",
+  "see_success": "🏆 Voir mes succès",
+  "view_carnet": "📘 Voir mon carnet",
+  "use_compass": "🧭 Boussole",
+  "access_map": "🗺️ Carte",
+  "print": "🖨️ Imprimer",
+  "intro_paragraph": "Une aventure artistique et patrimoniale t’attend à Banyuls-sur-Mer. Explore les lieux liés à Maillol, résous des énigmes, gagne des badges !",
+  "congrats": "🎨 Bravo, Œil d’Artiste !",
+  "le_savais_tu": "🧠 Le savais-tu ?"
+}
