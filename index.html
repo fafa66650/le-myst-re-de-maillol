@@ -2,82 +2,87 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title data-i18n="intro_title">🎨 Le Mystère de Maillol</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-<style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #fdf2f8, #fce7f3);
-  text-align: center;
-  padding: 40px 20px;
-  color: #701a75;
-}
-h2 {
-  color: #a21caf;
-}
-button {
-  padding: 10px 20px;
-  border: none;
-  background: #9333ea;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-button:hover {
-  background: #7e22ce;
-}
-img.logo {
-  width: 90px;
-  margin-bottom: 20px;
-}
-</style>
-
-  <script src="lang.js"></script>
+  <title>Le Mystère de Maillol - Accueil</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fdf2f8, #fce7f3);
+      text-align: center;
+      padding: 40px 20px;
+      color: #701a75;
+    }
+    .container {
+      background: white;
+      max-width: 750px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 2.2em;
+      color: #a21caf;
+    }
+    label, select, input {
+      display: block;
+      margin: 15px auto;
+      font-size: 1.1em;
+    }
+    button {
+      padding: 14px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background: #9333ea;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #7e22ce;
+    }
+  </style>
 </head>
-<body onload="loadLang()">
-<img src="assets/logo-fafa.png" alt="Logo" class="logo">
-<style>
-body, html { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
-</style>
-<script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-</script>
+<body>
+  <div class="container">
+    <h1>Le Mystère de Maillol</h1>
+    <p>Sélectionne ton mode de jeu :</p>
+    <select id="mode">
+      <option value="solo">Solo</option>
+      <option value="famille">Famille</option>
+      <option value="groupe">Groupe</option>
+      <option value="structure">Groupe Spécial (jeunes, écoles...)</option>
+    </select>
 
-<h1 data-i18n="intro_title">🎨 Le Mystère de Maillol</h1>
-<p data-i18n="intro_paragraph">
-  Une aventure artistique et patrimoniale t’attend à Banyuls-sur-Mer...
-</p>
-<p data-i18n="enter_code">Entre ton code pour accéder au parcours.</p>
-<input id="code" placeholder="fafa972">
-<br><br>
-<button onclick="validerCode()" data-i18n="validate">▶️ Valider</button>
-<p id="status" style="color: red;"></p>
+    <label for="participants">Noms des participants (séparés par des virgules) :</label>
+    <input type="text" id="participants" placeholder="Ex : Julie, Karim, Emma">
 
-<!-- Boutons langue -->
-<div style="margin-top: 20px;">
-  <button onclick="switchLang('fr')">🇫🇷 Français</button>
-  <button onclick="switchLang('en')">🇬🇧 English</button>
-</div>
+    <label for="code">Code d'accès :</label>
+    <input type="text" id="code" placeholder="Entrez le code fourni">
 
-<script src="codes.js"></script>
-<script>
-function validerCode() {
-  const code = document.getElementById("code").value.trim();
-  const info = codes[code];
-  if (!info) {
-    document.getElementById("status").innerText = tr.invalid_code;
-    return;
-  }
-  const created = new Date(info.created);
-  const now = new Date();
-  const expiration = new Date(created.getTime() + info.valid_hours * 3600000);
-  if (now > expiration) {
-    document.getElementById("status").innerText = tr.expired_code;
-    return;
-  }
-  localStorage.setItem("authorized", "true");
-  location.href = "carte.html";
-}
-</script>
-</body></html>
+    <button onclick="valider()">Démarrer l’aventure</button>
+  </div>
+
+  <script>
+    const codesValidite = {
+      "fafa972": 3 * 60 * 60 * 1000 // 3h en millisecondes
+    };
+
+    function valider() {
+      const code = document.getElementById("code").value;
+      const participants = document.getElementById("participants").value.trim();
+      const mode = document.getElementById("mode").value;
+
+      if (!participants) return alert("Merci d'indiquer au moins un participant.");
+      if (!code || !(code in codesValidite)) return alert("Code invalide ou expiré.");
+
+      const expiration = Date.now() + codesValidite[code];
+      localStorage.setItem("participants", participants);
+      localStorage.setItem("mode", mode);
+      localStorage.setItem("code", code);
+      localStorage.setItem("expiration", expiration);
+      location.href = "enigme1.html";
+    }
+  </script>
+</body>
+</html>
