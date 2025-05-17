@@ -1,79 +1,19 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <meta charset="UTF-8"><title>Énigme 9</title>
-  
-<style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #fdf2f8, #fce7f3);
-  text-align: center;
-  padding: 40px 20px;
-  color: #701a75;
-}
-h2 {
-  color: #a21caf;
-}
-button {
-  padding: 10px 20px;
-  border: none;
-  background: #9333ea;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-button:hover {
-  background: #7e22ce;
-}
-img.logo {
-  width: 90px;
-  margin-bottom: 20px;
-}
-</style>
-
-  <script src="lang.js"></script>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Énigme 9 – Le Mystère de Maillol</title>
 </head>
-<body onload="loadLang()"><img src="assets/logo-fafa.png" alt="Logo" class="logo">
-<style>
-body, html { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
-</style>
-<script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-</script>
-
-<h2 id="titre">Image absente</h2>
-<p id="question">Dans quelle salle manque un tableau ? (n°)</p>
-<input id="rep"><button onclick="valider()" data-i18n="validate">▶️ Valider</button>
-<p id="savais"></p>
-<br><br><button onclick="location.href='enigme10.html'" data-i18n="next">➡️ Suivant</button>
-<script>
-const textes = {
-  fr: {
-    titre: "Image absente",
-    question: "Dans quelle salle manque un tableau ? (n°)",
-    reponse: "3",
-    savais: "La salle 3 présente une anomalie."
-  },
-  en: {
-    titre: "Missing image",
-    question: "In which room is a painting missing? (number only)",
-    reponse: "3",
-    savais: "Room 3 reveals something is off."
-  }
-};
-let lang = navigator.language.startsWith('fr') ? 'fr' : 'en';
-function loadLang() {
-  const t = textes[lang];
-  document.getElementById("titre").innerText = t.titre;
-  document.getElementById("question").innerText = t.question;
-}
-function valider() {
-  const val = document.getElementById("rep").value.toLowerCase();
-  const t = textes[lang];
-  if (val.includes(t.reponse)) {
-    document.getElementById("savais").innerText = "🧠 " + t.savais;
-  } else {
-    alert(lang === "fr" ? "Essaie encore !" : "Try again!");
-  }
-}
-</script>
-</body></html>
+<body>
+  <h2>Énigme 9</h2>
+  <p>Contenu interactif de l'énigme 9 ici...</p>
+  <input type="text" id="rep">
+  <button onclick="valider()">Valider</button>
+  <script>
+    function valider() {
+      alert('Validation fictive pour l'énigme 9.');
+    }
+  </script>
+</body>
+</html>
